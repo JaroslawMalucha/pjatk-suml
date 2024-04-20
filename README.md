@@ -9,5 +9,24 @@ MODEL
 
 APP RUN:
 ```ps1
-streamlit run dog.py
+###/// using conda 
+## open conda terminal
+## activate envir
+conda activate suml
+## run app
+streamlit run ./src/dogs.py
+# or
+python -m streamlit run ./src/dogs.py
 ```
+
+
+# notes
+czy dane są:
+- zbalansowane
+- 
+
+parametry:
+- f1 score
+- accuracy
+- precision
+- ROC curve
