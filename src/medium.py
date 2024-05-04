@@ -12,7 +12,7 @@ import math
 import os
 
 import scipy.misc
-from scipy.stats import itemfreq
+from scipy.stats import cumfreq # itemfreq
 from random import sample
 import pickle
 

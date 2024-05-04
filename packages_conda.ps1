@@ -14,4 +14,9 @@ conda install -n $new_py_env --yes --update-all `
     python=3.10 `
     conda `
     pip `
-    streamlit
+    streamlit `
+    matplotlib `
+    tensorflow
+
+
+    
