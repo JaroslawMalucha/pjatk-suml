@@ -1,0 +1,65 @@
+#OUTPUT
+
+
+>>> predictor.fit(train_labels_df, presets='medium_quality_faster_train') # ValueError: Preset 'medium_quality' was not found. Valid presets: ['best_quality', 'good_quality_fast_inference', 'medium_quality_faster_train','medium_quality_faster_inference']
+Presets specified: ['medium_quality_faster_train']
+Converting raw DataFrame to ImageDataset...
+Detected 120 unique classes: ['affenpinscher', 'afghan_hound', 'african_hunting_dog', 'airedale', 'american_staffordshire_terrier', 'appenzeller', 'australian_terrier', 'basenji', 'basset', 'beagle', 'bedlington_terrier', 'bernese_mountain_dog', 'black-and-tan_coonhound', 'blenheim_spaniel', 'bloodhound', 'bluetick', 'border_collie', 'border_terrier', 'borzoi', 'boston_bull', 'bouvier_des_flandres', 'boxer', 'brabancon_griffon', 'briard', 'brittany_spaniel', 'bull_mastiff', 'cairn', 'cardigan', 'chesapeake_bay_retriever', 'chihuahua', 'chow', 'clumber', 'cocker_spaniel', 'collie', 'curly-coated_retriever', 'dandie_dinmont', 'dhole', 'dingo', 'doberman', 'english_foxhound', 'english_setter', 'english_springer', 'entlebucher', 'eskimo_dog', 'flat-coated_retriever', 'french_bulldog', 'german_shepherd', 'german_short-haired_pointer', 'giant_schnauzer', 'golden_retriever', 'gordon_setter', 'great_dane', 'great_pyrenees', 'greater_swiss_mountain_dog', 'groenendael', 'ibizan_hound', 'irish_setter', 'irish_terrier', 'irish_water_spaniel', 'irish_wolfhound', 'italian_greyhound', 'japanese_spaniel', 'keeshond', 'kelpie', 'kerry_blue_terrier', 'komondor', 'kuvasz', 'labrador_retriever', 'lakeland_terrier', 'leonberg', 'lhasa', 'malamute', 'malinois', 'maltese_dog', 'mexican_hairless', 'miniature_pinscher', 'miniature_poodle', 'miniature_schnauzer', 'newfoundland', 'norfolk_terrier', 'norwegian_elkhound', 'norwich_terrier', 'old_english_sheepdog', 'otterhound', 'papillon', 'pekinese', 'pembroke', 'pomeranian', 'pug', 'redbone', 'rhodesian_ridgeback', 'rottweiler', 'saint_bernard', 'saluki', 'samoyed', 'schipperke', 'scotch_terrier', 'scottish_deerhound', 'sealyham_terrier', 'shetland_sheepdog', 'shih-tzu', 'siberian_husky', 'silky_terrier', 'soft-coated_wheaten_terrier', 'staffordshire_bullterrier', 'standard_poodle', 'standard_schnauzer', 'sussex_spaniel', 'tibetan_mastiff', 'tibetan_terrier', 'toy_poodle', 'toy_terrier', 'vizsla', 'walker_hound', 'weimaraner', 'welsh_springer_spaniel', 'west_highland_white_terrier', 'whippet', 'wire-haired_fox_terrier', 'yorkshire_terrier']
+If you feel the `classes` is inaccurate, please construct the dataset explicitly, e.g. train_data = ImageDataset(train_data, classes=["foo", "bar"])
+Randomly split train_data into train[9199]/validation[1023] splits.
+Reset labels to [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119]
+No GPU detected/allowed, using most conservative search space.
+Starting fit without HPO
+INFO:TorchImageClassificationEstimator:modified configs(<old> != <new>): {
+INFO:TorchImageClassificationEstimator:root.train.epochs    200 != 50
+INFO:TorchImageClassificationEstimator:root.train.batch_size 32 != 64
+INFO:TorchImageClassificationEstimator:root.train.early_stop_patience -1 != 5
+INFO:TorchImageClassificationEstimator:root.train.early_stop_max_value 1.0 != inf
+INFO:TorchImageClassificationEstimator:root.train.early_stop_baseline 0.0 != -inf
+INFO:TorchImageClassificationEstimator:root.img_cls.model   resnet101 != resnet50d
+INFO:TorchImageClassificationEstimator:root.misc.seed       42 != 716
+INFO:TorchImageClassificationEstimator:root.misc.num_workers 4 != 24
+INFO:TorchImageClassificationEstimator:root.gpus            (0,) != ()
+INFO:TorchImageClassificationEstimator:}
+INFO:TorchImageClassificationEstimator:Saved config to C:\Users\jaros\proj\src\source\pjatk SUML\pjatk-suml\models-dogs\6b7a6623\.trial_0\config.yaml
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-weights/resnet50d_ra2-464e36ba.pth" to C:\Users\jaros/.cache\torch\hub\checkpoints\resnet50d_ra2-464e36ba.pth
+INFO:TorchImageClassificationEstimator:Model resnet50d created, param count:                                         23773144
+INFO:TorchImageClassificationEstimator:AMP not enabled. Training in float32.
+INFO:TorchImageClassificationEstimator:Disable EMA as it is not supported for now.
+INFO:TorchImageClassificationEstimator:Start training from [Epoch 0]
+INFO:TorchImageClassificationEstimator:Epoch[0] Batch [49]      Speed: 5.226127 samples/sec     accuracy=0.009375       lr=0.000100
+INFO:TorchImageClassificationEstimator:Epoch[0] Batch [99]      Speed: 6.398583 samples/sec     accuracy=0.009062       lr=0.000100
+INFO:TorchImageClassificationEstimator:[Epoch 0] training: accuracy=0.009288
+INFO:TorchImageClassificationEstimator:[Epoch 0] speed: 5 samples/sec   time cost: 1538.783393
+INFO:TorchImageClassificationEstimator:[Epoch 0] validation: top1=0.015640 top5=0.062561
+INFO:TorchImageClassificationEstimator:[Epoch 0] Current best top-1: 0.015640 vs previous -inf, saved to C:\Users\jaros\proj\src\source\pjatk SUML\pjatk-suml\models-dogs\6b7a6623\.trial_0\best_checkpoint.pkl
+INFO:TorchImageClassificationEstimator:Epoch[1] Batch [49]      Speed: 6.306679 samples/sec     accuracy=0.106563       lr=0.003400
+INFO:TorchImageClassificationEstimator:Epoch[1] Batch [99]      Speed: 6.371516 samples/sec     accuracy=0.208125       lr=0.003400
+INFO:TorchImageClassificationEstimator:[Epoch 1] training: accuracy=0.274148
+INFO:TorchImageClassificationEstimator:[Epoch 1] speed: 6 samples/sec   time cost: 1440.479171
+INFO:TorchImageClassificationEstimator:[Epoch 1] validation: top1=0.690127 top5=0.950147
+INFO:TorchImageClassificationEstimator:[Epoch 1] Current best top-1: 0.690127 vs previous 0.015640, saved to C:\Users\jaros\proj\src\source\pjatk SUML\pjatk-suml\models-dogs\6b7a6623\.trial_0\best_checkpoint.pkl
+INFO:TorchImageClassificationEstimator:Epoch[2] Batch [49]      Speed: 6.186596 samples/sec     accuracy=0.544063       lr=0.006700
+WARNING:TorchImageClassificationEstimator:`time_limit=3599.999001264572` reached, exit early...
+INFO:TorchImageClassificationEstimator:Applying the state from the best checkpoint...
+Finished, total runtime is 3662.89 s
+{ 'best_config': { 'batch_size': 64,
+                   'dist_ip_addrs': None,
+                   'early_stop_baseline': -inf,
+                   'early_stop_max_value': inf,
+                   'early_stop_patience': 5,
+                   'epochs': 50,
+                   'final_fit': False,
+                   'gpus': [],
+                   'lr': 0.01,
+                   'model': 'resnet50d',
+                   'ngpus_per_trial': 0,
+                   'nthreads_per_trial': 32,
+                   'num_workers': 24,
+                   'searcher': 'random',
+                   'seed': 716,
+                   'time_limits': 3600},
+  'total_time': 3603.0089654922485,
+  'train_acc': 0.5440625,
+  'valid_acc': 0.6901270744854171}
+<autogluon.vision.predictor.predictor.ImagePredictor object at 0x000001B59D14FAF0>

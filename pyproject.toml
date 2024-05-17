@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "pjatk-suml"
+version = "0.1.0"
+description = ""
+authors = ["Jarosław Małucha <jaroslaw.malucha@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "~3.10"
+pandas = "*"
+tensorflow = "~2.16.1"
+tensorflow-io-gcs-filesystem = "0.31.0"
+torch = {version = "2.1.2", source = "pytorch"}
+torchvision = {version = "0.16.2", source = "pytorch"}
+autogluon = "^1.1.0"
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# [tool.poetry.repositories]
+# torch = {url = "https://download.pytorch.org/whl/cpu", default = true}
