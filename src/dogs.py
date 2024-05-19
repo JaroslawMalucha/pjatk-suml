@@ -29,17 +29,21 @@ uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)
+    st.image(image, caption='Uploaded Image', width=200)
     st.write("Classifying...")
 
     # Preprocess the image and make prediction
     image = preprocess_image(image)
-    predictions = model.predict(image)
-    top_pred_idx = np.argmax(predictions, axis=1)[0]
+    predictions = model.predict(image)[0]
+    
+    # Get the top 5 predictions
+    top_indices = predictions.argsort()[-5:][::-1]
+    top_breeds = [(index_to_class[idx], predictions[idx]) for idx in top_indices]
 
-    predicted_breed = index_to_class.get(top_pred_idx, "Unknown")
-    st.write(f"Predicted Breed: {predicted_breed}")
-
-    # Show probabilities for each breed
-    prob_df = pd.DataFrame(predictions, columns=index_to_class.values())
-    st.bar_chart(prob_df.T)
+    # Display the top 5 predictions
+    st.write("### Top 5 Predicted Breeds:")
+    for i, (breed, prob) in enumerate(top_breeds):
+        if i == 0:
+            st.write(f"**{breed}: {prob*100:.3f} %**")
+        else:
+            st.write(f"{breed}: {prob*100:.3f} %")
