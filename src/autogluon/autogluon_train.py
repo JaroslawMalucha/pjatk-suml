@@ -1,3 +1,6 @@
+# activate autogluon env before running the script:
+#   ./.venv-autogluon/Scripts/Activate.ps1
+
 import zipfile
 import os
 import pandas as pd
