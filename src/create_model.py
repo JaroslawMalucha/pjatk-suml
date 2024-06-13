@@ -9,11 +9,19 @@ from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 
+# paths
+dogs_data_dir = '.\\data\\dogs'
+labels_file_path = os.path.join(dogs_data_dir, 'labels.csv')
+train_dir = os.path.join(dogs_data_dir, 'train')
+output_model_path = './models/dog_breed_classifier.h5'
+output_class_indices_path = './models/class_indices.pkl'
+
+
+
 # Load and preprocess data
-labels_df = pd.read_csv('Data\\labels.csv')
+labels_df = pd.read_csv(labels_file_path)
 labels_df['id'] = labels_df['id'].apply(lambda x: f"{x}.jpg")
 
-train_dir = 'Data\\train'
 valid_images = []
 for img in labels_df['id']:
     if os.path.isfile(os.path.join(train_dir, img)):
@@ -60,9 +68,9 @@ model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accur
 model.fit(train_generator, validation_data=validation_generator, epochs=10)
 
 # Save the model
-model.save('dog_breed_classifier.h5')
+model.save(output_model_path)
 
 # Save the class indices
-with open('class_indices.pkl', 'wb') as f:
+with open(output_class_indices_path, 'wb') as f:
     pickle.dump(train_generator.class_indices, f)
 

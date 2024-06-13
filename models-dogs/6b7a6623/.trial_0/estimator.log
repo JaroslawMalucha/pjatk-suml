@@ -1,0 +1,20 @@
+Saved config to C:\Users\jaros\proj\src\source\pjatk SUML\pjatk-suml\models-dogs\6b7a6623\.trial_0\config.yaml
+Model resnet50d created, param count:                                         23773144
+AMP not enabled. Training in float32.
+Disable EMA as it is not supported for now.
+Start training from [Epoch 0]
+Epoch[0] Batch [49]	Speed: 5.226127 samples/sec	accuracy=0.009375	lr=0.000100
+Epoch[0] Batch [99]	Speed: 6.398583 samples/sec	accuracy=0.009062	lr=0.000100
+[Epoch 0] training: accuracy=0.009288
+[Epoch 0] speed: 5 samples/sec	time cost: 1538.783393
+[Epoch 0] validation: top1=0.015640 top5=0.062561
+[Epoch 0] Current best top-1: 0.015640 vs previous -inf, saved to C:\Users\jaros\proj\src\source\pjatk SUML\pjatk-suml\models-dogs\6b7a6623\.trial_0\best_checkpoint.pkl
+Epoch[1] Batch [49]	Speed: 6.306679 samples/sec	accuracy=0.106563	lr=0.003400
+Epoch[1] Batch [99]	Speed: 6.371516 samples/sec	accuracy=0.208125	lr=0.003400
+[Epoch 1] training: accuracy=0.274148
+[Epoch 1] speed: 6 samples/sec	time cost: 1440.479171
+[Epoch 1] validation: top1=0.690127 top5=0.950147
+[Epoch 1] Current best top-1: 0.690127 vs previous 0.015640, saved to C:\Users\jaros\proj\src\source\pjatk SUML\pjatk-suml\models-dogs\6b7a6623\.trial_0\best_checkpoint.pkl
+Epoch[2] Batch [49]	Speed: 6.186596 samples/sec	accuracy=0.544063	lr=0.006700
+`time_limit=3599.999001264572` reached, exit early...
+Applying the state from the best checkpoint...

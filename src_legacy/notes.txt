@@ -1,0 +1,11 @@
+## notes
+
+czy dane są:
+- zbalansowane
+- 
+
+parametry:
+- f1 score
+- accuracy
+- precision
+- ROC curve

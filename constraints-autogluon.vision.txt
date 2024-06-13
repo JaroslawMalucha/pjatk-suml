@@ -1,0 +1,11 @@
+autogluon==0.6.2
+autogluon.common==0.6.2
+autogluon.core==0.6.2
+autogluon.features==0.6.2
+autogluon.multimodal==0.6.2
+autogluon.vision==0.6.2
+pandas==1.5.3
+Pillow==9.4.0
+timm==0.6.13
+torch==1.12.1
+torchvision==0.13.1
