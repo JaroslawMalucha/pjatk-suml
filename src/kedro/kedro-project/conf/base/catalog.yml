@@ -1,0 +1,18 @@
+mid_train_generator:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/train_generator.pickle
+
+mid_validation_generator:
+  type: pickle.PickleDataset
+  filepath: data/05_model_input/validation_generator.pickle
+
+output_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model.pickle
+  versioned: true
+
+output_model_class_indices:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model_class_indices.pickle
+  versioned: true
+
