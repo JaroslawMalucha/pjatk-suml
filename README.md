@@ -11,6 +11,11 @@ MODEL
 DOKUMENTACJA
 
 - <https://docs.google.com/document/d/1I3bQi63_60e4s9TT8-wLJwKxtOEC_lTf7eCRW-WLaP0/edit>
+  
+PREZENTACJA
+
+- <https://prezi.com/view/M0Z4GshkDqyMuKuxMcxX/>
+
 
 ## APP RUN:
 
