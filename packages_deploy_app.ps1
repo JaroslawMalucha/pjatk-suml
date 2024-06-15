@@ -23,7 +23,7 @@ pip install --require-virtualenv --requirement "./requirements-app.txt"
 ##------------------------------------------------------------------------------
 
 rm -r ./.venv
-& "$Env:LOCALAPPDATA\Programs\Python\Python310\python.exe" -m venv .venv
+& "$Env:LOCALAPPDATA\Programs\Python\Python311\python.exe" -m venv .venv
 ./.venv/Scripts/Activate.ps1
 
 python -m pip install --require-virtualenv --upgrade pip setuptools wheel IPython
