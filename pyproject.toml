@@ -2,7 +2,7 @@
 name = "PJATK-SUML"
 version = "0.1.0"
 description = "Demonstrates"
-authors = ["jaroslaw.malucha@gmail.com"]
+authors = ["John Smith <john@example.com>"]
 
 [tool.poetry.dependencies]
 python = "3.11.*"
