@@ -1,5 +1,9 @@
 # pjatk-suml - DOGS APP
 
+APP
+
+- <http://pjatk-suml-f48gcitidrjhqby7lstpxw.streamlit.app/?classId=48b6ac96-b5a3-47e3-888c-663d2d6c151d&assignmentId=e25fa223-7491-407c-8a74-5e7339154b77&submissionId=e12054e>
+
 DATA
 
 - <https://www.kaggle.com/c/dog-breed-identification/data>
