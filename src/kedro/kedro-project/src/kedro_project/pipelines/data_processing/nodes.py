@@ -1,0 +1,128 @@
+from typing import Dict, Tuple
+
+import os
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+import pickle
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
+
+def preprocess() -> Tuple:# -> tuple[Any, Any]:
+
+    print("==CWD==")
+    print(os.getcwd())
+
+    # paths
+    dogs_data_dir = 'data/01_raw/dogs'
+    labels_file_path = os.path.join(dogs_data_dir, 'labels.csv')
+    train_dir = os.path.join(dogs_data_dir, 'train')
+
+
+
+    # Load and preprocess data
+    labels_df = pd.read_csv(labels_file_path)
+    labels_df['id'] = labels_df['id'].apply(lambda x: f"{x}.jpg")
+
+    valid_images = []
+    for img in labels_df['id']:
+        if os.path.isfile(os.path.join(train_dir, img)):
+            valid_images.append(img)
+    labels_df = labels_df[labels_df['id'].isin(valid_images)]
+    datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
+
+    train_generator = datagen.flow_from_dataframe(
+        labels_df,
+        directory=train_dir,
+        x_col='id',
+        y_col='breed',
+        subset='training',
+        class_mode='categorical',
+        target_size=(224, 224),
+        batch_size=32
+    )
+
+    validation_generator = datagen.flow_from_dataframe(
+        labels_df,
+        directory=train_dir,
+        x_col='id',
+        y_col='breed',
+        subset='validation',
+        class_mode='categorical',
+        target_size=(224, 224),
+        batch_size=32
+    )
+
+    return train_generator, validation_generator
+
+
+def preprocess_and_train_model():
+
+    # paths
+    dogs_data_dir = 'data/01_raw/dogs'
+    labels_file_path = os.path.join(dogs_data_dir, 'labels.csv')
+    train_dir = os.path.join(dogs_data_dir, 'train')
+
+
+
+    # Load and preprocess data
+    labels_df = pd.read_csv(labels_file_path)
+    labels_df['id'] = labels_df['id'].apply(lambda x: f"{x}.jpg")
+
+    valid_images = []
+    for img in labels_df['id']:
+        if os.path.isfile(os.path.join(train_dir, img)):
+            valid_images.append(img)
+    labels_df = labels_df[labels_df['id'].isin(valid_images)]
+    datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
+
+    train_generator = datagen.flow_from_dataframe(
+        labels_df,
+        directory=train_dir,
+        x_col='id',
+        y_col='breed',
+        subset='training',
+        class_mode='categorical',
+        target_size=(224, 224),
+        batch_size=32
+    )
+
+    validation_generator = datagen.flow_from_dataframe(
+        labels_df,
+        directory=train_dir,
+        x_col='id',
+        y_col='breed',
+        subset='validation',
+        class_mode='categorical',
+        target_size=(224, 224),
+        batch_size=32
+    )
+
+    # Load pre-trained MobileNetV2 and add custom layers
+    base_model = MobileNetV2(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+    x = base_model.output
+    x = GlobalAveragePooling2D()(x)
+    x = Dense(1024, activation='relu')(x)
+    predictions = Dense(len(train_generator.class_indices), activation='softmax')(x)
+
+    model = Model(inputs=base_model.input, outputs=predictions)
+    for layer in base_model.layers:
+        layer.trainable = False
+
+    model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
+
+    # Train the model
+    model.fit(train_generator, validation_data=validation_generator, epochs=10)
+
+    # # Save the model
+    # model.save(output_model_path)
+
+    # # Save the class indices
+    # with open(output_class_indices_path, 'wb') as f:
+    #     pickle.dump(train_generator.class_indices, f)
+
+
+    return model, train_generator.class_indices
