@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "PJATK-SUML"
+version = "0.1.0"
+description = "Demonstrates"
+authors = ["John Smith <john@example.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "3.11.*"
+streamlit = "*"
+tensorflow = "*"
+pandas = "*"
+numpy = "*"
